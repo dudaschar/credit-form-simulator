@@ -29,6 +29,10 @@ class Navbar extends React.Component {
       this.setState({
         isOpen: false
       })
+    } else {
+      this.setState({
+        isOpen: true
+      })
     }
   }
 

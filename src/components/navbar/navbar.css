@@ -27,7 +27,8 @@
     color: #fffdf0;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 13px; }
+    font-size: 13px;
+    letter-spacing: 0.5px; }
     @media (max-width: 576px) {
       .navbar__link {
         display: inline-block;
