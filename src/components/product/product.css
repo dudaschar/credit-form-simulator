@@ -38,10 +38,10 @@
     letter-spacing: 0.5px;
     color: #fffdf0; }
   .product__customer {
-    width: 40%; }
+    width: 35%; }
     @media (min-width: 1500px) {
       .product__customer {
-        width: 50%; } }
+        width: 45%; } }
   @media (max-width: 576px) {
     .product__price, .product__goal {
       text-align: right; } }

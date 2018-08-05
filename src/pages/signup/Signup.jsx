@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Product from '../../components/product/Product'
+import OrderSteps from '../../components/orderSteps/OrderSteps'
 
 const Signup = () => (
   <div className="signup">
@@ -12,6 +13,7 @@ const Signup = () => (
       deadline="12"
       goal="Comprar uma bike"
     />
+    <OrderSteps />
   </div>
 )
 
