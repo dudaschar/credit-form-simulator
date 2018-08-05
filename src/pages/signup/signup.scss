@@ -1,0 +1,33 @@
+.signup {
+  background: #fffdf0;
+  height: 100vh;
+}
+
+.submit-form {
+  padding: 50px 25% 50px;
+  background: #fffdf0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media(max-width: 1112px) {
+    padding: 50px 15% 50px;
+  }
+  @media(max-width: 800px) {
+    padding: 50px 5% 50px;
+  }
+  @media(max-width: 576px) {
+    padding: 50px 25px 50px;
+  }
+  h2 {
+    font-size: 34px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #323132;
+    @media (max-width: 576px) {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  }
+}
