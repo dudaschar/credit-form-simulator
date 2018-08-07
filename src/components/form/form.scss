@@ -59,6 +59,16 @@
     color: #fffdf0;
     cursor: pointer;
   }
+  &__focus {
+    input {
+      border: 2px solid #00b7cd;
+      color: #00b7cd;
+    }
+    select {
+      border: 2px solid #00b7cd;
+      color: #00b7cd;
+    }
+  }
 }
 
 .form__rg {
@@ -103,11 +113,17 @@
     }
   }
   label:hover {
-    background-color: #323132;
-    color: #fffdf0;
+    border: 2px solid #00b7cd;
+    color: #00b7cd;
+    .form__gender--title {
+      color: #00b7cd;
+    }
   }
   p {
     padding-right: 10px;
     margin: 0;
+  }
+  label:hover .form__gender--title {
+     color: #00b7cd;
   }
 }

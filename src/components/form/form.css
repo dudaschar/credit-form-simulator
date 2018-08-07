@@ -54,6 +54,12 @@
     padding: 10px 25px;
     color: #fffdf0;
     cursor: pointer; }
+  .form__focus input {
+    border: 2px solid #00b7cd;
+    color: #00b7cd; }
+  .form__focus select {
+    border: 2px solid #00b7cd;
+    color: #00b7cd; }
 
 .form__rg {
   display: flex;
@@ -93,8 +99,12 @@
         justify-content: center;
         margin-bottom: 15px; } }
   .form__gender label:hover {
-    background-color: #323132;
-    color: #fffdf0; }
+    border: 2px solid #00b7cd;
+    color: #00b7cd; }
+    .form__gender label:hover .form__gender--title {
+      color: #00b7cd; }
   .form__gender p {
     padding-right: 10px;
     margin: 0; }
+  .form__gender label:hover .form__gender--title {
+    color: #00b7cd; }
