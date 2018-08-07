@@ -10,20 +10,60 @@ class Form extends React.Component {
     this.state = {
       rgNumber: '',
       rgDate: '',
-      rgDep: 'select',
-      gender: '',
+      rgDep: '',
+      gender: 'masculino',
       numberValid: false,
       dateValid: false,
-      DepValid: false,
+      depValid: false,
       genderValid: false,
+      formValid: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
+    const name = event.target.name
+    const value = event.target.value
+    this.setState({ [name]: value },
+      () => { this.validateField(name, value) })
   }
+
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors
+    let numberValid = this.state.numberValid
+    let dateValid = this.state.dateValid
+    let depValid = this.state.depValid
+    let genderValid = this.state.genderValid
+
+    switch (fieldName) {
+      case 'rgNumber':
+        numberValid = value !== ""
+        break;
+      case 'rgDate':
+        dateValid = value.length >= 10
+        break;
+      case 'rgDep':
+        depValid = value !== ""
+        break;
+      case 'gender':
+        genderValid = value !== ""
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      numberValid: numberValid,
+      dateValid: dateValid,
+      depValid: depValid,
+      genderValid: genderValid,
+    }, this.validateForm);
+  }
+
+  validateForm() {
+    this.setState({ formValid: this.state.numberValid && this.state.dateValid });
+  }
+
 
   fetchData() {
     let data
@@ -85,35 +125,35 @@ class Form extends React.Component {
           <p className="form__gender--title">Gênero</p>
           <label htmlFor="g-man">Masculino</label>
           <input
-            checked={this.state.gender === "Masculino"}
+            checked={this.state.gender === "masculino"}
             onChange={this.handleChange}
             id="g-man"
             name="gender"
             type="radio"
-            value="Masculino"
+            value="masculino"
           />
           <span>-</span>
           <label htmlFor="g-woman">Feminino</label>
           <input
-            checked={this.state.gender === "Feminino"}
+            checked={this.state.gender === "feminino"}
             onChange={this.handleChange}
             id="g-woman"
             name="gender"
             type="radio"
-            value="Feminino"
+            value="feminino"
           />
           <span>-</span>
           <label htmlFor="g-other">Outro</label>
           <input
-            checked={this.state.gender === "Outro"}
+            checked={this.state.gender === "outro"}
             onChange={this.handleChange}
             id="g-other"
             name="gender"
             type="radio"
-            value="Outro"
+            value="outro"
           />
         </div>
-        <button className="form__button">Continuar</button>
+        <button disabled={!this.state.formValid} className="form__button">Continuar</button>
       </form>
     )
   }

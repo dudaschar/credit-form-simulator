@@ -54,6 +54,8 @@
     padding: 10px 25px;
     color: #fffdf0;
     cursor: pointer; }
+  .form__button:disabled {
+    background-color: gray; }
   .form__focus input {
     border: 2px solid #00b7cd;
     color: #00b7cd; }
