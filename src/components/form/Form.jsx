@@ -11,22 +11,28 @@ class Form extends React.Component {
       rgNumber: '',
       rgDate: '',
       rgDep: '',
-      gender: 'masculino',
+      gender: '',
       numberValid: false,
       dateValid: false,
       depValid: false,
       genderValid: false,
       formValid: false,
+      isButtonDisabled: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.fetchData = this.fetchData.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
     const name = event.target.name
     const value = event.target.value
+
     this.setState({ [name]: value },
-      () => { this.validateField(name, value) })
+      () => {
+        this.validateField(name, value)
+        
+      })
   }
 
   validateField(fieldName, value) {
@@ -61,7 +67,30 @@ class Form extends React.Component {
   }
 
   validateForm() {
-    this.setState({ formValid: this.state.numberValid && this.state.dateValid });
+    this.setState({ formValid: this.state.numberValid && this.state.dateValid && this.state.genderValid && this.state.depValid }, () => {
+      const formValid = this.state.formValid
+      if (formValid) {
+        this.setState({ isButtonDisabled: false })
+      }
+    })
+  }
+
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const formValid = this.state.formValid
+
+    console.log(formValid)
+    if (formValid) {
+      alert('form enviado')
+      
+      fetch("https://5b6a58215b054c001474471b.mockapi.io/geru/", {
+        method: 'POST',
+      })
+
+    } else {
+      this.setState({isButtonDisabled: true})
+    }
   }
 
 
@@ -79,11 +108,11 @@ class Form extends React.Component {
     }
     return options
   }
-  
+
 
   render() {
     return (
-      <form className="form">
+      <form onSubmit={this.handleSubmit} className="form">
         <div className="form__rg">
           <div className="form__rg--input">
             <label htmlFor="n-rg">Número do RG</label>
@@ -123,7 +152,6 @@ class Form extends React.Component {
         </div>
         <div className="form__gender">
           <p className="form__gender--title">Gênero</p>
-          <label htmlFor="g-man">Masculino</label>
           <input
             checked={this.state.gender === "masculino"}
             onChange={this.handleChange}
@@ -132,8 +160,8 @@ class Form extends React.Component {
             type="radio"
             value="masculino"
           />
+          <label htmlFor="g-man">Masculino</label>
           <span>-</span>
-          <label htmlFor="g-woman">Feminino</label>
           <input
             checked={this.state.gender === "feminino"}
             onChange={this.handleChange}
@@ -142,8 +170,8 @@ class Form extends React.Component {
             type="radio"
             value="feminino"
           />
+          <label htmlFor="g-woman">Feminino</label>
           <span>-</span>
-          <label htmlFor="g-other">Outro</label>
           <input
             checked={this.state.gender === "outro"}
             onChange={this.handleChange}
@@ -152,8 +180,9 @@ class Form extends React.Component {
             type="radio"
             value="outro"
           />
+          <label htmlFor="g-other">Outro</label>
         </div>
-        <button disabled={!this.state.formValid} className="form__button">Continuar</button>
+        <button disabled={this.state.isButtonDisabled} className="form__button">Continuar</button>
       </form>
     )
   }

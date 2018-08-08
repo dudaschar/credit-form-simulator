@@ -82,7 +82,8 @@
     display: none; }
   .form__gender input[type=radio]:checked + label {
     background-color: #323132;
-    color: #fffdf0; }
+    color: #fffdf0;
+    border: 2px solid #323132; }
   .form__gender label {
     display: flex;
     align-items: center;
@@ -103,10 +104,8 @@
   .form__gender label:hover {
     border: 2px solid #00b7cd;
     color: #00b7cd; }
-    .form__gender label:hover .form__gender--title {
-      color: #00b7cd; }
+  .form__gender:hover p {
+    color: #00b7cd; }
   .form__gender p {
     padding-right: 10px;
     margin: 0; }
-  .form__gender label:hover .form__gender--title {
-    color: #00b7cd; }
