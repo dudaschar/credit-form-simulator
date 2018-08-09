@@ -1,11 +1,11 @@
 .product {
   background: #323132;
-  padding: 20px 15%;
+  padding: 10px 15%;
   display: flex;
   justify-content: space-between; }
   @media (max-width: 850px) {
     .product {
-      padding: 20px 5%; } }
+      padding: 10px 5%; } }
   @media (max-width: 576px) {
     .product {
       flex-wrap: wrap; }

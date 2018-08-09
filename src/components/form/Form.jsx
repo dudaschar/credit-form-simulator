@@ -75,17 +75,35 @@ class Form extends React.Component {
     })
   }
 
+  fetchAPI() {
+    
+  }
+
 
   handleSubmit(event) {
     event.preventDefault()
     const formValid = this.state.formValid
 
+    const { rgNumber, rgDate, rgDep, gender } = this.state
+
+    console.log({ rgNumber, rgDate, rgDep, gender })
+
     console.log(formValid)
     if (formValid) {
-      alert('form enviado')
       
-      fetch("https://5b6a58215b054c001474471b.mockapi.io/geru/", {
+      fetch("https://4e848538-4e18-4e32-803c-6f18e8e7468d.mock.pstmn.io/geru", {
         method: 'POST',
+        headers: new Headers({
+          'Access-Control-Request-Headers': 'access-control-allow-headers,access-control-allow-origin,content-type',
+          'Access-Control-Request-Method': 'POST',
+          'Access-Control-Allow-Origin': '*',
+
+        }),
+        body: { rgNumber, rgDate, rgDep, gender },
+      }).then((response) => {
+        if (response.status === 201) {
+          alert('form enviado')
+        }
       })
 
     } else {

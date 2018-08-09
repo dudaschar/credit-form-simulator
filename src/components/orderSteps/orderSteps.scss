@@ -1,10 +1,10 @@
 .order-steps {
   background: #eae8dd;
-  padding: 10px 15%;
+  padding: 0 15%;
   display: flex;
   justify-content: space-between;
   @media (max-width: 850px) {
-    padding: 10px 5%;
+    padding: 0 5%;
   }
   @media (max-width: 576px) {
     flex-wrap: wrap;
