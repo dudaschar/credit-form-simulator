@@ -56,12 +56,6 @@
     cursor: pointer; }
   .form__button:disabled {
     background-color: gray; }
-  .form__focus input {
-    border: 2px solid #00b7cd;
-    color: #00b7cd; }
-  .form__focus select {
-    border: 2px solid #00b7cd;
-    color: #00b7cd; }
 
 .form__rg {
   display: flex;
@@ -70,6 +64,17 @@
   @media (max-width: 576px) {
     .form__rg {
       flex-direction: column; } }
+
+.input__number:hover input, .input__date:hover input, .input__dep:hover input {
+  color: #00b7cd;
+  border: 2px solid #00b7cd; }
+
+.input__number:hover select, .input__date:hover select, .input__dep:hover select {
+  color: #00b7cd;
+  border: 2px solid #00b7cd; }
+
+.input__number:hover label, .input__date:hover label, .input__dep:hover label {
+  color: #00b7cd; }
 
 .form__gender {
   display: flex;

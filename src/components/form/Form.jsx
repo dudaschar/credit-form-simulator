@@ -86,8 +86,6 @@ class Form extends React.Component {
 
     const { rgNumber, rgDate, rgDep, gender } = this.state
 
-    console.log({ rgNumber, rgDate, rgDep, gender })
-
     console.log(formValid)
     if (formValid) {
       
@@ -102,14 +100,15 @@ class Form extends React.Component {
         body: { rgNumber, rgDate, rgDep, gender },
       }).then((response) => {
         if (response.status === 201) {
-          alert('form enviado')
+          alert('Formulário enviado com sucesso')
         }
       })
 
     } else {
       this.setState({isButtonDisabled: true})
+      }
     }
-  }
+  
 
 
   fetchData() {
@@ -129,10 +128,11 @@ class Form extends React.Component {
 
 
   render() {
+    
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form__rg">
-          <div className="form__rg--input">
+          <div className="form__rg--input input__number">
             <label htmlFor="n-rg">Número do RG</label>
             <input
               value={this.state.rgNumber}
@@ -143,7 +143,7 @@ class Form extends React.Component {
             />
             <span>-</span>
           </div>
-          <div className="form__rg--input">
+          <div className="form__rg--input input__date">
             <label htmlFor="d-rg">Data de emissão</label>
             <MaskedInput
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
@@ -156,7 +156,7 @@ class Form extends React.Component {
             />
             <span>-</span>
           </div>
-          <div className="form__rg--input">
+          <div className="form__rg--input input__dep">
             <label htmlFor="e-rg">Órgão expedidor</label>
             <select
               id="dep-rg"
